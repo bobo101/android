@@ -1,0 +1,61 @@
+package com.tonycube.fragmenttabdemo;
+
+import com.tonycube.demo.R;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+
+
+public class page2 extends Fragment {
+	
+	private ListView listView;
+	
+	private View v;
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		Log.d("=====>", "AppleFragment onAttach");
+		MainActivity mainActivity = (MainActivity)activity;
+		value = mainActivity.getAppleData();
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		Log.d("=====>", "AppleFragment onCreateView");
+		v = inflater.inflate(R.layout.page2, container, false);
+        listView = (ListView)v.findViewById(R.id.listView1);
+        final String[] arr = new String[]{
+        		"選擇醫師","選擇時間"
+        };
+        ArrayAdapter<String> adapter = 
+            new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1,arr);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new OnItemClickListener(){
+
+            public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
+                // TODO Auto-generated method stub
+                Toast.makeText(getActivity(), "你按下"+arr[position], Toast.LENGTH_SHORT).show();
+                if(position==1){ 
+                	
+                	}
+                
+            }
+       
+        });
+        return v;
+        }
+}

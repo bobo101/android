@@ -1,0 +1,46 @@
+package com.tonycube.fragmenttabdemo;
+
+import java.util.Calendar;
+
+import com.tonycube.demo.R;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class SelectTime extends Fragment{
+	private String value = "";
+	private View v;
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		Log.d("=====>", "SelectTimeFragment onAttach");
+		
+		MainActivity mainActivity = (MainActivity)activity;
+		value = mainActivity.getGoogleData();
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+		Log.d("=====>", "SelectTimeFragment onCreateView");
+		((MainActivity) getActivity()).setActionBarTitle("¿ï¾Ü®É¶¡");
+		 v=inflater.inflate(R.layout.select_time, container, false);
+		 Calendar c = Calendar.getInstance();
+		 c.set(2012, 11, 12);  
+		 return v;
+	}
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		Log.d("=====>", "SelectTimeFragment onActivityCreated");
+		
+	}
+
+}

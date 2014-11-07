@@ -1,0 +1,62 @@
+package com.tonycube.fragmenttabdemo;
+
+import com.tonycube.demo.R;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTabHost;
+
+public class MainActivity extends FragmentActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		setContentView(R.layout.main);
+	
+		FragmentTabHost tabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
+		tabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
+		//1
+		tabHost.addTab(tabHost.newTabSpec("聯絡我們")
+			   				  .setIndicator("聯絡我們"), 
+   					  AppleFragment.class, 
+   					  null);
+	    //2
+		tabHost.addTab(tabHost.newTabSpec("預約紀錄")
+				   			  .setIndicator("預約紀錄"), 
+					  GoogleFragment.class, 
+					  null);
+	    //3
+		tabHost.addTab(tabHost.newTabSpec("預約看診")
+				   			  .setIndicator("預約看診"), 
+					  FacebookFragment.class, 
+				      null);
+	    //4
+		tabHost.addTab(tabHost.newTabSpec("就診訊息")
+			   				  .setIndicator("就診訊息"), 
+					  TwitterFragment.class, 
+					  null);
+	}
+
+	/**************************
+	 * 
+	 * 		給子頁籤呼叫用
+	 * 
+	 **************************/
+	
+	public String getAppleData(){
+		return "Apple 123";
+	}
+
+	public String getGoogleData(){
+		return "Google 456";
+	}
+	
+	public String getFacebookData(){
+		return "Facebook 789";
+	}
+	
+	public String getTwitterData(){
+		return "Twitter abc";
+	}
+}

@@ -1,0 +1,51 @@
+package com.tonycube.fragmenttabdemo;
+
+import com.tonycube.demo.R;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTabHost;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class page2 extends FragmentActivity{
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		setContentView(R.layout.main);
+	
+		FragmentTabHost tabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
+		tabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
+		
+		//1 add tab here
+		tabHost.addTab(tabHost.newTabSpec("tab1")
+			   				  .setIndicator("預約看診", getResources().getDrawable(R.drawable.ic_launcher)),			   				  
+   					  AppleFragment.class, null);
+	    //2
+		tabHost.addTab(tabHost.newTabSpec("tab2")
+				   			  .setIndicator("預約紀錄"), 
+					  GoogleFragment.class, 
+					  null);
+	    //3
+		tabHost.addTab(tabHost.newTabSpec("tab3")
+				   			  .setIndicator("聯絡我們"), 
+					  FacebookFragment.class, 
+				      null);
+	    //4
+		tabHost.addTab(tabHost.newTabSpec("tab4")
+			   				  .setIndicator("就診訊息"), 
+					  TwitterFragment.class, 
+					  null);
+		//5
+		tabHost.addTab(tabHost.newTabSpec("tab5")
+ 				  			  .setIndicator("設定"), 
+ 				  	 SettingFragment.class, 
+ 				  	  null);
+	}
+}
